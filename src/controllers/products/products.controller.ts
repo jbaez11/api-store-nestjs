@@ -15,6 +15,7 @@ import {
 
 import { response, Response } from 'express';
 import { ParseIntPipe } from '../../common/parse-int.pipe';
+import { CreateProductDto, UpdateProductDto } from '../../dtos/products.dtos';
 import { ProductsService } from '../../services/products/products.service';
 
 @Controller('products')
@@ -47,7 +48,7 @@ export class ProductsController {
     return this.productsService.findOne(productId);
   }
   @Post()
-  create(@Body() payload: any) {
+  create(@Body() payload: CreateProductDto) {
     // return {
     //   message: 'accion de crear',
     //   payload,
@@ -55,7 +56,7 @@ export class ProductsController {
     return this.productsService.create(payload);
   }
   @Put(':id')
-  update(@Param('id') id: string, @Body() payload: any) {
+  update(@Param('id') id: string, @Body() payload: UpdateProductDto) {
     return this.productsService.update(+id, payload);
     // return {
     //   message: 'accion de editar',
