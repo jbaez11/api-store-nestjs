@@ -62,10 +62,7 @@ export class ProductsController {
     // };
   }
   @Delete(':id')
-  delete(@Param() id: number) {
-    return {
-      message: 'accion de eliminar',
-      id,
-    };
+  delete(@Param('id') id: string) {
+    return this.productsService.remove(+id);
   }
 }
